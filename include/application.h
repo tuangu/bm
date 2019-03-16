@@ -25,8 +25,9 @@ public:
 
     /**
      * Print the greeting statement
+     * \return The greeting statement
      */
-    void printHelloWorld();
+    std::string printHelloWorld();
 private:
     std::string greeting; //!< Greeting statement
 };

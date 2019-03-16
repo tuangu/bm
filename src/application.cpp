@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 #include "application.h"
 
@@ -11,13 +12,8 @@ Application::~Application() {
     std::cout << "Calling destructor" << std::endl;
 }
 
-void Application::printHelloWorld() {
+std::string Application::printHelloWorld() {
     std::cout << greeting << std::endl;
-}
 
-int main() {
-    Application app("Hello world!");
-    app.printHelloWorld();
-
-    return 0;
+    return greeting;
 }
