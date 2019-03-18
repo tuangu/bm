@@ -21,7 +21,7 @@ TEST_CASE("enterprise account can be created, deposited, and withdrew", "[enterp
     }
 
     SECTION("cannot deposit money with invalid number") {
-        acc.deposit(-123.4);
+        acc.deposit(-123.4f);
         REQUIRE(acc.getBalance() == 0.0f);
     }
 

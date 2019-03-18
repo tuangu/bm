@@ -21,7 +21,7 @@ TEST_CASE("customer account can be created, deposited, and withdrew", "[customer
     }
 
     SECTION("cannot deposit money with invalid number") {
-        acc.deposit(-123.4);
+        acc.deposit(-123.4f);
         REQUIRE(acc.getBalance() == 0.0f);
     }
 

@@ -3,6 +3,7 @@
  */
 
 #include <iostream>
+#include <iomanip>
 #include "enterprise.h"
 #include "id_generator.h"
 
@@ -25,7 +26,15 @@ void Enterprise::printDetails() {
 }
 
 std::ostream &operator<<(std::ostream &os, const Enterprise &account) {
-    os << "\tCreated on: " << std::asctime(std::localtime(&account.createdDate))
+    std::time_t createdDate = account.createdDate;
+#ifdef __unix__
+    auto tm = *std::localtime(&createdDate);
+#elif defined(_WIN32) || defined(_WIN64)
+    std::tm tm;
+    localtime_s(&tm, &createdDate);
+#endif
+
+    os << "\tCreated on: " << std::put_time(&tm, "%d-%m-%Y %H-%M-%S")
        << "\tAccount ID: " << account.id << std::endl
        << "\tY-tunnus: " << account.y_tunnus << std::endl
        << "\tCompany name: " << account.name << std::endl

@@ -18,7 +18,7 @@ IdGenerator::~IdGenerator() {
 }
 
 std::int32_t IdGenerator::getId(AccountType type) {
-    std::int32_t uniqueId;
+    std::int32_t uniqueId = 0;
 
     switch (type) {
         case AccountType::BASIC:

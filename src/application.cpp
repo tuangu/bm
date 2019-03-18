@@ -2,12 +2,9 @@
  *  \brief Application implementation
  */
 
-#include <ctime>
 #include <cstdint>
 #include <iostream>
 #include <memory>
-#include <limits>
-#include <sstream>
 #include <string>
 #include "customer.h"
 #include "enterprise.h"
@@ -156,7 +153,7 @@ void Application::createAccount() {
 
 void Application::deposit() {
     bool found = false;
-    int amount;
+    float amount;
     std::int32_t id;
 
     std::cout << "\n**** DEPOSIT TO ACCOUNT ****" << std::endl;
@@ -180,7 +177,7 @@ void Application::deposit() {
 
 void Application::withdraw() {
     bool found = false;
-    int amount;
+    float amount;
     std::int32_t id;
 
     std::cout << "\n**** WITHDRAW FROM ACCOUNT ****" << std::endl;

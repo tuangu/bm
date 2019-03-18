@@ -18,7 +18,7 @@ TEST_CASE("basic account can be created, deposited, and withdrew", "[basic_accou
     }
 
     SECTION("cannot deposit money with invalid number") {
-        basicAcc.deposit(-123.4);
+        basicAcc.deposit(-123.4f);
         REQUIRE(basicAcc.getBalance() == 0.0f);
     }
 

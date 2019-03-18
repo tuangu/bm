@@ -3,6 +3,7 @@
  */
 
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include "customer.h"
 #include "id_generator.h"
@@ -43,7 +44,15 @@ void Customer::printDetails() {
 }
 
 std::ostream &operator<<(std::ostream &os, const Customer &customer) {
-    os << "\tCreated on: " << std::asctime(std::localtime(&customer.createdDate))
+    std::time_t createdDate = customer.createdDate;
+#ifdef __unix__
+    auto tm = *std::localtime(&createdDate);
+#elif defined(_WIN32) || defined(_WIN64)
+    std::tm tm;
+    localtime_s(&tm, &createdDate);
+#endif
+
+    os << "\tCreated on: " << std::put_time(&tm, "%d-%m-%Y %H-%M-%S")
        << "\tAccount ID: " << customer.id << std::endl
        << "\tName: " << std::get<0>(customer.name) << " " << std::get<1>(customer.name) << std::endl
        << "\tBalance: " << customer.balance;
