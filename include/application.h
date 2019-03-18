@@ -5,31 +5,58 @@
 #ifndef __APPLICATION_H__
 #define __APPLICATION_H__
 
-#include <string>
+#include <memory>
+#include <vector>
+#include "basic.h"
+#include "customer.h"
+#include "enterprise.h"
+#include "id_generator.h"
 
-/** \brief The Application class
- *  You can print your greeting here
- */
 class Application {
 public:
     /**
-     * The constructor
-     * @param greeting The greeting statement
+     * Application constructor
      */
-    Application(std::string greeting);
+    Application();
 
     /**
-     * The destructor
+     * Application destructor
      */
     virtual ~Application();
 
     /**
-     * Print the greeting statement
-     * \return The greeting statement
+     * Run the application
      */
-    std::string printHelloWorld();
+    void run();
 private:
-    std::string greeting; //!< Greeting statement
+    std::vector<std::shared_ptr<Basic>> accounts;   //<! All accounts
+
+    /**
+     * Get account details. This will print out account details if the account is exist.
+     * \param query name of company or name of individual
+     */
+    void getAccountDetails(std::string query);
+
+    /**
+     * Create account helper function.
+     */
+    void createAccount();
+
+    /**
+     * Deposit to account helper function.
+     */
+    void deposit();
+
+    /**
+     * Withdraw from account helper function.
+     */
+    void withdraw();
+
+    /**
+     * Query account details helper function.
+     */
+    void query();
 };
+
 
 #endif /* define __APPLICATION_H__ */
