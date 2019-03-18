@@ -3,6 +3,11 @@
 You can build this project with CMake. If you don't have CMake installed, you can get it from https://cmake.org/.
 
 ## Building
+Get the code:
+```
+git clone --recursive https://github.com/tuangu/bm.git
+```
+
 ### Windows
 Do the following. All the commands are run with Powershell.
 * Create a folder called **build-msvc**
