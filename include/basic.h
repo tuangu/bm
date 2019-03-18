@@ -11,14 +11,6 @@
 #include <string>
 #include <tuple>
 
-/**
- * Query union
- */
-union Query {
-    std::pair<std::string, std::string> customerName; //<! Customer's first and last name 
-    std::string companyName;                          //<! Company name
-};
-
 class Basic {
 public:
     friend std::ostream &operator<<(std::ostream &os, const Basic &account);
