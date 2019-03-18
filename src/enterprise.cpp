@@ -34,7 +34,7 @@ std::ostream &operator<<(std::ostream &os, const Enterprise &account) {
     localtime_s(&tm, &createdDate);
 #endif
 
-    os << "\tCreated on: " << std::put_time(&tm, "%d-%m-%Y %H-%M-%S")
+    os << "\tCreated on: " << std::put_time(&tm, "%d-%m-%Y %H:%M:%S") << std::endl
        << "\tAccount ID: " << account.id << std::endl
        << "\tY-tunnus: " << account.y_tunnus << std::endl
        << "\tCompany name: " << account.name << std::endl

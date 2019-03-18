@@ -61,7 +61,7 @@ std::ostream &operator<<(std::ostream &os, const Basic &account) {
     localtime_s(&tm, &createdDate);
 #endif
 
-    os << "\tCreated on: " << std::put_time(&tm, "%d-%m-%Y %H-%M-%S")
+    os << "\tCreated on: " << std::put_time(&tm, "%d-%m-%Y %H:%M:%S") << std::endl
        << "\tAccount ID: " << account.id << std::endl
        << "\tBalance: " << account.balance;
 
