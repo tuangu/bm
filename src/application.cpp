@@ -6,9 +6,8 @@
 #include <iostream>
 #include <memory>
 #include <string>
-#include "customer.h"
-#include "enterprise.h"
-#include "id_generator.h"
+#include "account_factory.h"
+#include "basic.h"
 #include "application.h"
 
 Application::Application() {
@@ -90,11 +89,7 @@ void Application::createAccount() {
         switch (selection) {
             case 1: // Basic account
             {
-                std::shared_ptr<Basic> ptr = std::make_shared<Basic>(
-                    0.0f, 
-                    IdGenerator::getId(AccountType::BASIC), 
-                    std::time(nullptr)
-                );
+                std::shared_ptr<Basic> ptr = AccountFactory::getInstance()->makeBasic(0.0f);
                 accounts.push_back(ptr);
                 std::cout << ">> Created your basic account." << std::endl;
                 std::cout << "\tAccount ID: " << ptr->getId() << std::endl;
@@ -110,7 +105,7 @@ void Application::createAccount() {
                 std::cout << "Your last name: ";
                 std::cin >> lastName;
 
-                std::shared_ptr<Customer> ptr = std::make_shared<Customer>(
+                std::shared_ptr<Basic> ptr = AccountFactory::getInstance()->makeCustomer(
                     0.0f,
                     firstName,
                     lastName
@@ -131,7 +126,7 @@ void Application::createAccount() {
                 std::cout << "Y-tunnus: ";
                 std::cin >> y_tunnus;
 
-                std::shared_ptr<Enterprise> ptr = std::make_shared<Enterprise>(
+                std::shared_ptr<Basic> ptr = AccountFactory::getInstance()->makeEnterprise(
                     0.0f,
                     name,
                     y_tunnus

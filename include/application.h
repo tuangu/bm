@@ -8,9 +8,6 @@
 #include <memory>
 #include <vector>
 #include "basic.h"
-#include "customer.h"
-#include "enterprise.h"
-#include "id_generator.h"
 
 class Application {
 public:
