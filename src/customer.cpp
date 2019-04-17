@@ -9,7 +9,7 @@
 #include "id_generator.h"
 
 Customer::Customer(float initial, std::string firstName, std::string lastName):
-    Basic(initial, IdGenerator::getId(AccountType::CUSTOMER), std::time(nullptr)), 
+    Basic(initial, IdGenerator::getNextId(ID_MASK, CUSTOMER_ID_MASK), std::time(nullptr)), 
     name(std::make_pair(firstName, lastName)) {
 
 }

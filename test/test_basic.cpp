@@ -6,7 +6,7 @@
 
 TEST_CASE("basic account can be created, deposited, and withdrew", "[basic_account]") {
     std::time_t now = std::time(nullptr);
-    Basic basicAcc(0.0f, IdGenerator::getId(AccountType::BASIC), now);
+    Basic basicAcc(0.0f, IdGenerator::getNextId(ID_MASK, BASIC_ID_MASK), now);
     
     REQUIRE(basicAcc.getBalance() == 0.0f);
     REQUIRE((basicAcc.getId() >> 29) == (BASIC_ID_MASK >> 29));

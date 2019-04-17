@@ -6,20 +6,7 @@
 #define __ID_GENERATOR_H__
 
 #include <cstdint>
-
-constexpr std::int32_t ID_MASK = ~(0 << 31 | 0 << 30 | 0 << 29);            //<! Account ID mask
-constexpr std::int32_t BASIC_ID_MASK = (0 << 31 | 1 << 30 | 0 << 29);       //<! Basic account ID mask
-constexpr std::int32_t CUSTOMER_ID_MASK = (0 << 31 | 0 << 30 | 1 << 29);    //<! Customer account ID mask
-constexpr std::int32_t ENTERPRISE_ID_MASK = (0 << 31 | 1 << 30 | 1 << 29);  //<! Enterprise account ID mask
-
-/**
- * Different types of bank account
- */
-enum AccountType {
-    BASIC,      //<! Basic account
-    CUSTOMER,   //<! Customer account
-    ENTERPRISE, //<! Enterprise account
-};
+#include <map>
 
 class IdGenerator {
 public:
@@ -33,17 +20,9 @@ public:
      */
     virtual ~IdGenerator();
 
-    /**
-     * Get next unique id based on account type. 
-     * This is a static function.
-     * \param type account type (\b Basic, \b Customer, \b Enterprise)
-     * \return the unique id 
-     */
-    static std::int32_t getId(AccountType type);
+    static std::int32_t getNextId(std::int32_t base, std::int32_t mask);
 private:
-    static std::int32_t nextBasicId;         //<! Next unique id for basic account
-    static std::int32_t nextCustomerId;      //<! Next unique id for customer account
-    static std::int32_t nextEnterpriseId;    //<! Next unique id for enterprise account
+    static std::map<std::int32_t, std::int32_t> idPool;
 };
 
 #endif /* define __ID_GENERATOR_H__ */

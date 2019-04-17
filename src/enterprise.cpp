@@ -8,7 +8,7 @@
 #include "id_generator.h"
 
 Enterprise::Enterprise(float initial, std::string name, std::string y_tunnus):
-    Basic(initial, IdGenerator::getId(AccountType::ENTERPRISE), std::time(nullptr)),
+    Basic(initial, IdGenerator::getNextId(ID_MASK, ENTERPRISE_ID_MASK), std::time(nullptr)),
     name(name), y_tunnus(y_tunnus) {
     // TODO: verify the y_tunnus 
 }

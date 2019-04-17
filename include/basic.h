@@ -11,6 +11,11 @@
 #include <string>
 #include <tuple>
 
+constexpr std::int32_t ID_MASK = ~(0 << 31 | 0 << 30 | 0 << 29);            //<! Account ID mask
+constexpr std::int32_t BASIC_ID_MASK = (0 << 31 | 1 << 30 | 0 << 29);       //<! Basic account ID mask
+constexpr std::int32_t CUSTOMER_ID_MASK = (0 << 31 | 0 << 30 | 1 << 29);    //<! Customer account ID mask
+constexpr std::int32_t ENTERPRISE_ID_MASK = (0 << 31 | 1 << 30 | 1 << 29);  //<! Enterprise account ID mask
+
 class Basic {
 public:
     friend std::ostream &operator<<(std::ostream &os, const Basic &account);

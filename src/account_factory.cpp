@@ -19,7 +19,7 @@ std::shared_ptr<AccountFactory> AccountFactory::getInstance() {
 std::shared_ptr<Basic> AccountFactory::makeBasic(float initial) {
     std::shared_ptr<Basic> basicAccount = std::make_shared<Basic>(
         initial, 
-        IdGenerator::getId(AccountType::BASIC), 
+        IdGenerator::getNextId(ID_MASK, BASIC_ID_MASK), 
         std::time(nullptr)
     );
 
